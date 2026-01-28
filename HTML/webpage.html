@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" class="dark"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind configuration for dark mode
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <title>ITE Cryptography</title>
+</head>
+<body class="bg-white dark:bg-gray-900 transition-colors duration-300">
+
+    <nav class="bg-white dark:bg-slate-800 border-b dark:border-slate-700 px-6 py-4 h-[100px]  flex items-center shadow-2xl">
+        <div class="w-full mx-auto flex items-center justify-around">
+            
+            <div class="w-[100px] h-[100px] ">
+                   <img src="/Img/nobackground.png" alt="">
+                </div>
+
+            <div class="flex items-center space-x-8">
+                
+                <div class="relative group">
+                    <button id="dropdownBtn" class="flex items-center space-x-1 text-slate-700 dark:text-slate-200 hover:text-blue-500 transition">
+                        <span>Classical Cryptography</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+
+                    <div id="dropdownMenu" class="hidden absolute left-0 mt-2 w-48 bg-white dark:bg-slate-700 rounded-lg shadow-xl border border-slate-100 dark:border-slate-600 overflow-hidden z-50">
+                        <a href="#" class="block px-4 py-2 text-sm text-slate-600 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-slate-600">Caesar Cipher</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-slate-600 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-slate-600">General Shift Cipher</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-slate-600 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-slate-600">Affine Cipher</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-slate-600 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-slate-600">Transposition Cipher</a>
+                    </div>
+                </div>
+
+                <a href="#" class="text-slate-700 dark:text-slate-200 hover:text-blue-500 transition">RSA Cryptography</a>
+            </div>
+
+            <button id="themeToggle" class="p-2 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-yellow-400 focus:outline-none">
+                <svg id="moonIcon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                <svg id="sunIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <script src="/JS/script.js"></script>
+</body>
+</html>
