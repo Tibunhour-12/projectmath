@@ -20,8 +20,8 @@
     <title>ITE Cryptography</title>
 </head>
 <body class="bg-white dark:bg-gray-900 transition-colors duration-300 font-primary">
-    <header>
-          <nav class="bg-white dark:bg-slate-800 border-b dark:border-slate-700 px-6 py-4 h-[100px]  flex items-center shadow-2xl">
+    <header class="">
+          <nav class=" bg-white dark:bg-slate-800 border-b dark:border-slate-700 px-6 py-4 h-[100px]  flex items-center shadow-2xl">
         <div class="w-full mx-auto flex items-center justify-around">
             
             <div class="w-[100px] h-[100px] ">
@@ -37,7 +37,7 @@
 
                     <div id="dropdownMenu" class="hidden absolute left-0 mt-2 w-48 bg-white dark:bg-slate-700 rounded-lg shadow-xl border border-slate-100 dark:border-slate-600 overflow-hidden z-50">
                         <a href="#caesar" class="block px-4 py-2 text-sm text-slate-600 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-slate-600">Caesar Cipher</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-slate-600 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-slate-600">General Shift Cipher</a>
+                        <a href="#ShiftCipher" class="block px-4 py-2 text-sm text-slate-600 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-slate-600">General Shift Cipher</a>
                     
                     </div>
                 </div>
@@ -51,26 +51,100 @@
         </div>
     </nav>
     </header>
-    <main class=" p-6 flex  justify-center items-center">
-        <section class="h-full " id="caesar">
-           <div class="w-[800px] h-[600px] bg-slate-700 dark:bg-slate-800
-            rounded-2xl shadow-lg ">
-            <div class="flex justify-center items-center">
-                <ul class="">
-                    <li>
-                       <h3 class="text-white text-[18px] m-5 font-bold text-center">Caesar Cipher</h3>
-                    </li>
-                </ul>
-            </div>
+    <main class=" p-6">
+        <section class="h-full flex flex-col items-center mb-5" id="caesar">
+        <div class="w-[900px] bg-slate-700 dark:bg-slate-800
+            rounded-2xl shadow-lg p-4">
+    <p class="text-white text-[18px] font-bold text-center mb-4">
+        Caesar Cipher
+    </p>
+    <div class="flex gap-4 items-start flex-row-reverse">
+            <div class="flex-shrink-0">
+            <img class="h-[400px] w-[300px] object-cover rounded-lg"src="/Img/cas.jpg"alt="Caesar Cipher">
         </div>
+        <div class="text-white text-[15px] indent-8">
+            <p class="mb-4">
+                One of the earliest known uses of cryptography was by
+                <strong>Julius Caesar</strong>. He made messages secret by
+                shifting each letter three letters forward in the alphabet.
+                For instance, using this scheme the letter <strong>B</strong>
+                is shifted to <strong>E</strong> and the letter
+                <strong>X</strong> is shifted to <strong>A</strong>.
+            </p>
+
+            <p>
+                To express Caesar’s encryption process mathematically, first
+                replace each letter by an integer from <strong>0 to 25</strong>,
+                equal to one less than its position in the alphabet.
+                For example, replace <strong>A</strong> by 0,
+                <strong>K</strong> by 10, and <strong>Z</strong> by 25.
+                Caesar’s encryption method can be represented by the function
+                <strong>f(p) = (p + 3) mod 26</strong>.
+                In the encrypted version of the message, the letter represented
+                by <strong>p</strong> is replaced with the letter represented
+                by <strong>(p + 3) mod 26</strong>.
+                To decrypt the message, we simply reverse the process by
+                subtracting 3 and taking modulo 26 again.
+            </p>
+        </div>
+
+    </div>
+</div>
+
         <div class="flex justify-center items-center ">
-            <input type="text"class="w-[800px] h-[100px] bg-slate-700 dark:bg-slate-800
-            rounded-2xl shadow-lg flex  justify-start mt-5 p-3 text-white" placeholder="Enter your key here..."    >
+            <input type="text"class="w-[900px] h-[100px] bg-slate-700 dark:bg-slate-800
+            rounded-2xl shadow-lg flex  justify-start mt-5 p-3 text-white" placeholder="Enter your plain text..."    >
         </div>
            <div class="flex justify-center items-center mt-2.5">
                 <button class="ml-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Encrypt</button>
                 <button class="ml-4 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">Decrypt</button>
             </div>
+        </section>
+        <section class="h-full flex flex-col items-center" id="ShiftCipher">
+     <div class="w-[900px] bg-slate-700 dark:bg-slate-800
+            rounded-2xl shadow-lg p-4">
+
+    <p class="text-white text-[18px] font-bold text-center mb-4">
+        General Shift Cipher
+    </p>
+    <div class="flex gap-4 items-center">
+        <div class="flex-shrink-0">
+            <img class="h-[300px] w-[200px] object-cover rounded-lg"
+                 src="/Img/cas.jpg"
+                 alt="Caesar Cipher">
+        </div>
+        <div class="text-white text-[15px] indent-8">
+            <p>
+                The General Shift Cipher extends the Caesar Cipher by allowing
+                flexibility in the shift value. Rather than always shifting
+                letters by three positions, it permits any integer amount to be
+                used as the shift. This added flexibility makes the cipher more
+                adaptable and slightly harder to break than the traditional
+                Caesar Cipher.
+            </p>
+        </div>
+
+    </div>
+    
+</div><!-- first -->
+           <div class="flex justify-center items-center ">
+            <input type="text"class="w-[900px] h-[100px] bg-slate-700 dark:bg-slate-800
+            rounded-2xl shadow-lg flex  justify-start mt-5 p-3 text-white" placeholder="Enter your plain text..."    >
+        </div>
+           <div class="flex justify-center items-center mt-2.5">
+                <button class="ml-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Encrypt</button>
+                <button class="ml-4 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">Decrypt</button>
+            </div>
+                 <!-- second -->
+            <div class="flex justify-center items-center ">
+            <input type="text"class="w-[900px] h-[100px] bg-slate-700 dark:bg-slate-800
+            rounded-2xl shadow-lg flex  justify-start mt-5 p-3 text-white" placeholder="Enter your key text..."    >
+        </div>
+     
+           <div class="flex justify-center items-center mt-2.5">
+                <button class="ml-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Encrypt</button>
+                <button class="ml-4 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">Decrypt</button>
+            </div>  
         </section>
     </main>
     <script src="/JS/script.js"></script>
