@@ -56,7 +56,7 @@
                     <div class="flex-shrink-0">
                         <img class="h-[400px] w-[300px] object-cover rounded-lg" src="./Img/cas.jpg" alt="Caesar Cipher">
                     </div>
-                    <div class="text-white text-[15px] indent-8">
+                    <div class="text-white text-[18px] indent-8">
                         <p class="mb-4">
                             One of the earliest known uses of cryptography was by
                             <strong>Julius Caesar</strong>. He made messages secret by
@@ -106,7 +106,7 @@
                     <div class="flex-shrink-0">
                         <img class="h-[300px] w-[200px] object-cover rounded-lg" src="./Img/cas.jpg" alt="Caesar Cipher">
                     </div>
-                    <div class="text-white text-[15px] indent-8">
+                    <div class="text-white text-[18px] indent-8">
                         <p>
                             The General Shift Cipher extends the Caesar Cipher by allowing
                             flexibility in the shift value. Rather than always shifting
@@ -117,8 +117,8 @@
                         </p>
                         <p class="mt-2">
                             <strong>Encryption: f(p) = (p + k) mod 26</strong><br>
-                            <strong>Decryption: f(p) = (p - k) mod 26</strong><br>
-                            <span class="text-sm text-gray-400">where k can be any integer (positive or negative)</span>
+                            <strong class="ml-8">Decryption: f(p) = (p - k) mod 26</strong><br>
+                            <span class="text-white">where k can be any integer (positive or negative)</span>
                         </p>
                     </div>
                 </div>
@@ -141,11 +141,11 @@
             </div>
             
             <!-- Shift Result -->
-            <div id="shiftResult" class="mt-4 w-[900px] hidden">
+            <div id="shiftResult" class="mt-4 w-[900px] hidden flex flex-col items-center">
                 <div class="bg-slate-600 dark:bg-slate-700 p-4 rounded-lg">
                     <p class="font-semibold text-white">Result:</p>
-                    <p id="shiftOutput" class="font-mono text-lg text-green-400"></p>
-                    <p id="shiftKeyInfo" class="text-xs text-gray-300 mt-2"></p>
+                    <p id="shiftOutput" class="text-[15px] text-green-400"></p>
+                    <p id="shiftKeyInfo" class="text-[15px] text-gray-300 mt-2"></p>
                 </div>
             </div>
         </section>
@@ -168,12 +168,12 @@
                     </p>
                     <p>It uses two keys:</p>
 
-                    <ul class="list-disc ml-5">
+                    <ul class="list-disc ml-20">
                         <li>Public key is used for encryption</li>
                         <li>Private key is used for decryption</li>
                     </ul>
                     <p class="mt-1.5 text-red-500">RSA Key Generation Steps</p>
-                    <ol class="list-decimal ml-5">
+                    <ol class="list-decimal ml-20">
                         <li>Choose two large prime numbers <strong>p</strong> and <strong>q</strong>.</li>
                         <li>Compute <strong>n = p × q</strong>.</li>
                         <li>Compute <strong>φ(n) = (p − 1)(q − 1)</strong>.</li>
@@ -186,20 +186,23 @@
                             <strong>d × e ≡ 1 (mod φ(n))</strong>.
                         </li>
                     </ol>
-                    <p><strong>Public Key:</strong> (n, e)</p>
-                    <p><strong>Private Key:</strong> (n, d)</p>
+                    <div class="ml-5">
+                        <p><strong>Public Key :</strong ><span class="text-red-500">(n, e)</span></p>
+                        <p><strong>Private Key:</strong><span class="text-red-500">(n, d)</span></p> 
+                    </div>
+         
 
                     <p class="mt-1.5 text-red-500">RSA Encryption</p>
 
-                    <p>Message is converted to a number <strong>M</strong>.</p>
+                    <p class="ml-5">Message is converted to a number <strong>M</strong>.</p>
 
-                        <h2>Encryption Formula</h2>
-                        <p>
+                        <h2 class="ml-5">Encryption Formula</h2>
+                        <p class="ml-5">
                             <strong>C = M<sup>e</sup> mod n</strong>
                         </p>
 
                         <h3>Where:</h3>
-                        <ul class="list-disc ml-6">
+                        <ul class="list-disc ml-20 ">
                             <li><strong>M</strong> = original message number</li>
                             <li><strong>e</strong> = public key exponent</li>
                             <li><strong>n</strong> = modulus (from the key generation step)</li>
@@ -207,19 +210,22 @@
                         </ul>
 
                            <p class="mt-1.5 text-red-500">RSA Decryption</p>
-                        <p>Ciphertext <strong>C</strong> is decrypted using the private key.</p>
+                           <div class="ml-5">
+                                <p>Ciphertext <strong>C</strong> is decrypted using the private key.</p>
 
-                        <h2>Decryption Formula</h2>
-                        <p>
-                            <strong>M = C<sup>d</sup> mod n</strong>
-                        </p>
+                            <h2>Decryption Formula</h2>
+                            <p>
+                                <strong>M = C<sup>d</sup> mod n</strong>
+                            </p>
 
-                        <h3>Notes:</h3>
-                            <p>Only the private key holder can decrypt the message.</p>
+                            <h3>Notes:</h3>
+                                <p>Only the private key holder can decrypt the message.</p>
+                           </div>
+                       
 
                     <p  class="mt-1.5 text-red-500">RSA Example (Simplified)</p>
                     <p class="underline mt-1.5 mb-1.5">Key Generation</p>
-                    <ul class="list-disc ml-6">
+                    <ul class="list-disc ml-20">
                         <li>Choose <strong>p = 5</strong> and <strong>q = 11</strong></li>
                         <li>Compute <strong>n = p × q = 5 × 11 = 55</strong></li>
                         <li>Compute <strong>φ(n) = (p − 1)(q − 1) = (5-1)(11-1) = 40</strong></li>
@@ -230,22 +236,24 @@
                             Compute private exponent <strong>d = 27</strong> such that d × e ≡ 1 (mod φ(n))
                         </li>
                     </ul>
-
                     <p  class="mt-1.5 text-red-500">Encryption</p>
-                    <p>
+                    <p class="ml-5">
                         Encrypt <strong>M = 7</strong> using public key (<strong>n = 55</strong>, <strong>e = 3</strong>):
-                    </p>
-                    <p>
+                    </p class="ml-5">
+                    <p class="ml-5">
                         <strong>C = M<sup>e</sup> mod n = 7<sup>3</sup> mod 55 = 343 mod 55 = 13</strong>
                     </p>
 
                     <p  class="mt-1.5 text-red-500">Decryption</p>
-                    <p>
+                    <div class="ml-5">
+                           <p>
                         Decrypt <strong>C = 13</strong> using private key (<strong>n = 55</strong>, <strong>d = 27</strong>):
                     </p>
                     <p>
                         <strong>M = C<sup>d</sup> mod n = 13<sup>27</sup> mod 55 = 7</strong>
                     </p>
+                    </div>
+                 
                 </div>
                  </div>
             </div>
@@ -277,7 +285,7 @@
             <div class="w-[900px] mb-6 mt-6">
                 <!-- Encryption Section -->
                 <div class="bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-6">
-                    <h2 class="text-xl font-semibold mb-4 text-blue-400">📝 Encryption</h2>
+                    <h2 class="text-[18px] font-semibold mb-4 text-blue-400">Encryption</h2>
                     
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-300 mb-2">Select Public Key (e):</label>
@@ -309,15 +317,15 @@
                 <!-- Key Output -->
                 <div id="keyOutput" class="mt-4 hidden w-[900px]">
                     <div class="bg-slate-700 dark:bg-slate-800 p-4 rounded-2xl shadow-lg">
-                        <p class="font-mono text-sm text-white">🔑 Public Key (n, e): <span id="publicKey" class="font-bold text-green-400"></span></p>
-                        <p class="font-mono text-sm text-white">🔐 Private Key (n, d): <span id="privateKey" class="font-bold text-red-400"></span></p>
+                        <p class=" text-[15px] text-white">🔑 Public Key (n, e): <span id="publicKey" class="font-bold text-green-400"></span></p>
+                        <p class="text-[15px] text-white">🔐 Private Key (n, d): <span id="privateKey" class="font-bold text-red-400"></span></p>
                         <p class="text-xs text-gray-300 mt-2">n = p × q | φ(n) = (p-1)(q-1) | e × d ≡ 1 mod φ(n)</p>
                     </div>
                 </div>
                 
                 <!-- Decryption Section -->
                 <div class="bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-6 mt-6">
-                    <h2 class="text-xl font-semibold mb-4 text-green-400">🔓 Decryption</h2>
+                    <h2 class="text-[15px] mb-4 text-green-400">🔓 Decryption</h2>
                     
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-300 mb-2">Private Key (d):</label>
