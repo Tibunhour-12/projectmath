@@ -195,17 +195,10 @@
                 <button onclick="generateKeys()" class="ml-4 w-[100px] h-[50px] bg-blue-700 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Next</button>
             </div>
 
-            <!-- Key Output -->
-            <div id="keyOutput" class="mt-4 hidden w-[900px]">
-                <div class="bg-slate-700 dark:bg-slate-800 p-4 rounded-2xl shadow-lg">
-                    <p class="font-mono text-sm text-white">🔑 Public Key (n, e): <span id="publicKey" class="font-bold text-green-400"></span></p>
-                    <p class="font-mono text-sm text-white">🔐 Private Key (n, d): <span id="privateKey" class="font-bold text-red-400"></span></p>
-                    <p class="text-xs text-gray-300 mt-2">n = p × q | φ(n) = (p-1)(q-1) | e × d ≡ 1 mod φ(n)</p>
-                </div>
-            </div>
+            
 
             <!-- Encryption and Decryption Grid -->
-            <div class="w-[900px] grid md:grid-cols-2 gap-6 mt-6">
+            <div class="w-[900px] mb-6 mt-6">
                 <!-- Encryption Section -->
                 <div class="bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-6">
                     <h2 class="text-xl font-semibold mb-4 text-blue-400">📝 Encryption</h2>
@@ -236,9 +229,18 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Key Output -->
+                <div id="keyOutput" class="mt-4 hidden w-[900px]">
+                    <div class="bg-slate-700 dark:bg-slate-800 p-4 rounded-2xl shadow-lg">
+                        <p class="font-mono text-sm text-white">🔑 Public Key (n, e): <span id="publicKey" class="font-bold text-green-400"></span></p>
+                        <p class="font-mono text-sm text-white">🔐 Private Key (n, d): <span id="privateKey" class="font-bold text-red-400"></span></p>
+                        <p class="text-xs text-gray-300 mt-2">n = p × q | φ(n) = (p-1)(q-1) | e × d ≡ 1 mod φ(n)</p>
+                    </div>
+                </div>
                 
                 <!-- Decryption Section -->
-                <div class="bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-6">
+                <div class="bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-6 mt-6">
                     <h2 class="text-xl font-semibold mb-4 text-green-400">🔓 Decryption</h2>
                     
                     <div class="mb-4">
@@ -257,7 +259,7 @@
                     </div>
                     
                     <div class="flex justify-center items-center mt-2.5">
-                        <button onclick="decryptMessage()" class="w-[120px] h-[50px] bg-green-700 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition">🔓 Decrypt</button>
+                        <button onclick="decryptMessage()" class="w-[125px] h-[50px] bg-green-700 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition">🔓 Decrypt</button>
                     </div>
                     
                     <div id="decryptionResult" class="mt-4 hidden">
@@ -270,26 +272,6 @@
                 </div>
             </div>
 
-            <!-- Quick Demo Section -->
-            <div class="w-[900px] bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-6 mt-6">
-                <h2 class="text-xl font-semibold mb-2 text-white">🎯 Quick Demo (Try this example)</h2>
-                <p class="text-sm text-gray-300 mb-4">Use these values to see how RSA works:</p>
-                
-                <div class="grid md:grid-cols-3 gap-4 text-sm">
-                    <div class="bg-slate-600 dark:bg-slate-900 p-3 rounded-lg">
-                        <span class="font-bold text-white">Key Generation:</span><br>
-                        <span class="text-gray-300">p = 61, q = 53<br>n = 3233, φ(n) = 3120<br>e = 17, d = 2753</span>
-                    </div>
-                    <div class="bg-slate-600 dark:bg-slate-900 p-3 rounded-lg">
-                        <span class="font-bold text-white">Encryption:</span><br>
-                        <span class="text-gray-300">Message: "HELLO"<br>H(8) → 8^17 mod 3233 = 79<br>E(5) → 5^17 mod 3233 = 82</span>
-                    </div>
-                    <div class="bg-slate-600 dark:bg-slate-900 p-3 rounded-lg">
-                        <span class="font-bold text-white">Decryption:</span><br>
-                        <span class="text-gray-300">79^2753 mod 3233 = 8 → "H"<br>82^2753 mod 3233 = 5 → "E"</span>
-                    </div>
-                </div>
-            </div>
         </section>
     </main>
 
