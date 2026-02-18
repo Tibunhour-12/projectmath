@@ -1,66 +1,23 @@
-// 1. Dropdown Logic
-const dropdownBtn = document.getElementById('dropdownBtn');
-const dropdownMenu = document.getElementById('dropdownMenu');
-
-dropdownBtn.addEventListener('click', (e) => {
-    e.stopPropagation(); // Prevents immediate closing
-    dropdownMenu.classList.toggle('hidden');
-});
-
-// Close dropdown when clicking anywhere else
-window.addEventListener('click', () => {
-    if (!dropdownMenu.classList.contains('hidden')) {
-        dropdownMenu.classList.add('hidden');
-    }
-});
-
-// 2. Dark Mode Logic
-const themeToggle = document.getElementById('themeToggle');
-const sunIcon = document.getElementById('sunIcon');
-const moonIcon = document.getElementById('moonIcon');
-const html = document.documentElement;
-
-themeToggle.addEventListener('click', () => {
-    html.classList.toggle('dark');
-    
-    // Toggle icons
-    if (html.classList.contains('dark')) {
-        sunIcon.classList.remove('hidden');
-        moonIcon.classList.add('hidden');
-    } else {
-        sunIcon.classList.add('hidden');
-        moonIcon.classList.remove('hidden');
-    }
-});
-
-   // Desktop dropdown
-    const dropdownBtn = document.getElementById('dropdownBtn');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    dropdownBtn.addEventListener('click', () => {
-        dropdownMenu.classList.toggle('hidden');
-    });
-
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menuBtn');
+ const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    // Toggle Mobile Menu
     menuBtn.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
+        menuBtn.textContent = mobileMenu.classList.contains('hidden') ? '☰' : '✕';
     });
 
-    // Mobile dropdown
-    const dropdownBtnMobile = document.getElementById('dropdownBtnMobile');
-    const dropdownMenuMobile = document.getElementById('dropdownMenuMobile');
-    dropdownBtnMobile.addEventListener('click', () => {
-        dropdownMenuMobile.classList.toggle('hidden');
+    // Toggle Dark Mode
+    themeToggle.addEventListener('click', () => {
+        html.classList.toggle('dark');
+        // Save user preference
+        localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
     });
 
-    // Optional: click outside to close dropdown
-    window.addEventListener('click', function(e) {
-        if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-            dropdownMenu.classList.add('hidden');
-        }
-        if (!dropdownBtnMobile.contains(e.target) && !dropdownMenuMobile.contains(e.target)) {
-            dropdownMenuMobile.classList.add('hidden');
-        }
-    });
-
+    // Set theme on initial load
+    if (localStorage.getItem('theme') === 'dark' || 
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+    }
