@@ -33,5 +33,34 @@ themeToggle.addEventListener('click', () => {
     }
 });
 
- 
+   // Desktop dropdown
+    const dropdownBtn = document.getElementById('dropdownBtn');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    dropdownBtn.addEventListener('click', () => {
+        dropdownMenu.classList.toggle('hidden');
+    });
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Mobile dropdown
+    const dropdownBtnMobile = document.getElementById('dropdownBtnMobile');
+    const dropdownMenuMobile = document.getElementById('dropdownMenuMobile');
+    dropdownBtnMobile.addEventListener('click', () => {
+        dropdownMenuMobile.classList.toggle('hidden');
+    });
+
+    // Optional: click outside to close dropdown
+    window.addEventListener('click', function(e) {
+        if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.add('hidden');
+        }
+        if (!dropdownBtnMobile.contains(e.target) && !dropdownMenuMobile.contains(e.target)) {
+            dropdownMenuMobile.classList.add('hidden');
+        }
+    });
 
