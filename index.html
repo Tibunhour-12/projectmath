@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -188,20 +188,20 @@
                     </ul>
 
                     <p class="mt-1.5 text-red-500 font-bold">RSA Key Generation Steps</p>
-                    <ol class="list-decimal ml-6 md:ml-10 space-y-1">
-                        <li>Choose two large prime numbers <strong>p</strong> and <strong>q</strong>.</li>
-                        <li>Compute <strong>n = p × q</strong>.</li>
-                        <li>Compute <strong>φ(n) = (p − 1)(q − 1)</strong>.</li>
-                        <li>Choose <strong>e</strong>: 1 < e < φ(n) and <strong>gcd(e, φ(n)) = 1</strong>.</li>
-                        <li>Compute <strong>d</strong>: <strong>d × e ≡ 1 (mod φ(n))</strong>.</li>
-                    </ol>
+                    <div class="text-[16px]">
+                        <ol class="list-decimal ml-6 md:ml-10 space-y-1 ">
+                            <li>Choose two large prime numbers <strong>p</strong> and <strong>q</strong>.</li>
+                            <li>Compute <strong>n = p × q</strong>.</li>
+                            <li>Compute <strong>φ(n) = (p − 1)(q − 1)</strong>.</li>
+                            <li>Choose <strong>e</strong>: 1 < e < φ(n) and <strong>gcd(e, φ(n)) = 1</strong>.</li>
+                            <li>Compute <strong>d</strong>: <strong>d × e ≡ 1 (mod φ(n))</strong>.</li>
+                        </ol>
+                    </div>
+               
                 </div>
 
                 <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-600">
-                    
-
-[Image of RSA algorithm flowchart]
-
+                    [Image of RSA algorithm flowchart]
                     <div class="mt-4 space-y-2">
                         <p><strong>Public Key:</strong> <span class="text-red-500">(n, e)</span></p>
                         <p><strong>Private Key:</strong> <span class="text-red-500">(n, d)</span></p>
