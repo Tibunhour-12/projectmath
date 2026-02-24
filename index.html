@@ -2,7 +2,7 @@
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -18,17 +18,34 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
     <title>ITE Cryptography</title>
+    <style>
+        /* responsive base adjustments */
+        @media (max-width: 640px) {
+            .w-\[900px\] { width: 100%; }
+            .h-\[100px\] { height: auto; min-height: 80px; }
+            .text-\[18px\] { font-size: 1rem; }
+            .indent-8 { text-indent: 1rem; }
+            .flex.gap-4 { flex-direction: column; }
+            .ml-20 { margin-left: 1.5rem; }
+            .ml-5 { margin-left: 0.75rem; }
+        }
+        section { scroll-margin-top: 120px; }
+        /* ensure images scale */
+        img { max-width: 100%; height: auto; }
+    </style>
 </head>
-<body class="bg-white dark:bg-gray-900 transition-colors duration-300 font-primary">
+<body class="bg-white dark:bg-gray-900 transition-colors duration-300 font-primary antialiased">
     <header>
-        <nav class="bg-white dark:bg-slate-800 border-b dark:border-slate-700 px-6 py-4 h-[100px] flex items-center shadow-2xl">
-            <div class="w-full mx-auto flex items-center justify-around">
-                <div class="w-[100px] h-[100px]">
-                    <img src="./Img/nobackground.png" alt="">
+        <nav class="bg-white dark:bg-slate-800 border-b dark:border-slate-700 px-4 sm:px-6 py-3 sm:py-4 min-h-[100px] flex items-center shadow-2xl">
+            <div class="w-full mx-auto flex flex-wrap items-center justify-center gap-4 lg:justify-around">
+                <!-- logo responsive -->
+                <div class="w-20 sm:w-[100px] h-20 sm:h-[100px] shrink-0">
+                    <img src="./Img/nobackground.png" alt="logo" class="w-full h-full object-contain">
                 </div>
-                <div class="flex items-center space-x-8">
+                
+                <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 lg:space-x-8">
                     <div class="relative group">
-                        <button id="dropdownBtn" class="flex items-center space-x-1 text-slate-700 dark:text-slate-200 hover:text-blue-500 transition hover:scale-105 duration-400">
+                        <button id="dropdownBtn" class="flex items-center space-x-1 text-slate-700 dark:text-slate-200 hover:text-blue-500 transition hover:scale-105 duration-400 text-sm sm:text-base">
                             <span>Classical Cryptography</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
@@ -37,9 +54,10 @@
                             <a href="#shift" class="block px-4 py-2 text-sm text-slate-600 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-slate-600">General Shift Cipher</a>
                         </div>
                     </div>
-                    <a href="#rsa" class="text-slate-700 dark:text-slate-200 hover:text-blue-500 transition hover:scale-105 duration-400">RSA Cryptography</a>
+                    <a href="#rsa" class="text-slate-700 dark:text-slate-200 hover:text-blue-500 transition hover:scale-105 duration-400 text-sm sm:text-base">RSA Cryptography</a>
                 </div>
-                <button id="themeToggle" class="p-2 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-yellow-400 focus:outline-none">
+                
+                <button id="themeToggle" class="p-2 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-yellow-400 focus:outline-none shrink-0">
                     <svg id="moonIcon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                     <svg id="sunIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
                 </button>
@@ -47,16 +65,16 @@
         </nav>
     </header>
     
-    <main class="p-6">
+    <main class="p-4 sm:p-6 max-w-7xl mx-auto">
         <!-- Caesar Cipher Section -->
-        <section class="h-full flex flex-col items-center mb-5" id="caesar">
-            <div class="w-[900px] bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-4">
-                <p class="text-white text-[18px] font-bold text-center mb-4">Caesar Cipher (Shift by 3)</p>
-                <div class="flex gap-4 items-start flex-row-reverse">
-                    <div class="flex-shrink-0">
-                        <img class="h-[400px] w-[300px] object-cover rounded-lg" src="./Img/cas.jpg" alt="Caesar Cipher">
+        <section class="flex flex-col items-center mb-8 scroll-mt-28" id="caesar">
+            <div class="w-full max-w-4xl bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-4 sm:p-5">
+                <p class="text-white text-lg sm:text-xl font-bold text-center mb-4">Caesar Cipher (Shift by 3)</p>
+                <div class="flex flex-col md:flex-row gap-4 items-start md:flex-row-reverse">
+                    <div class="flex-shrink-0 mx-auto md:mx-0 w-48 md:w-auto">
+                        <img class="w-full h-auto max-h-[300px] md:max-h-[400px] object-cover rounded-lg" src="./Img/cas.jpg" alt="Caesar Cipher">
                     </div>
-                    <div class="text-white text-[18px] indent-8">
+                    <div class="text-white text-base sm:text-lg indent-4 sm:indent-8">
                         <p class="mb-4">
                             One of the earliest known uses of cryptography was by
                             <strong>Julius Caesar</strong>. He made messages secret by
@@ -79,34 +97,34 @@
             </div>
             
             <!-- Caesar Input -->
-            <div class="flex justify-center items-center">
-                <input type="text" id="caesarInput" class="w-[900px] h-[100px] bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg flex justify-start mt-5 p-3 text-white" placeholder="Enter your plain text...">
+            <div class="w-full max-w-4xl mt-5">
+                <input type="text" id="caesarInput" class="w-full min-h-[80px] sm:h-[100px] bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-4 text-white placeholder:text-gray-400" placeholder="Enter your plain text...">
             </div>
             
             <!-- Caesar Buttons and Result -->
-            <div class="flex justify-center items-center mt-2.5">
-                <button onclick="caesarEncrypt()" class="ml-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Encrypt</button>
-                <button onclick="caesarDecrypt()" class="ml-4 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">Decrypt</button>
+            <div class="flex flex-wrap justify-center items-center gap-3 mt-3">
+                <button onclick="caesarEncrypt()" class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2.5 rounded-lg transition text-sm sm:text-base">Encrypt</button>
+                <button onclick="caesarDecrypt()" class="bg-red-500 hover:bg-red-600 text-white px-5 py-2.5 rounded-lg transition text-sm sm:text-base">Decrypt</button>
             </div>
             
             <!-- Caesar Result -->
-            <div id="caesarResult" class="mt-4 w-[900px] hidden">
+            <div id="caesarResult" class="mt-4 w-full max-w-4xl hidden">
                 <div class="bg-slate-600 dark:bg-slate-700 p-4 rounded-lg">
                     <p class="font-semibold text-white">Result:</p>
-                    <p id="caesarOutput" class="font-mono text-lg text-green-400"></p>
+                    <p id="caesarOutput" class="font-mono text-base sm:text-lg text-green-400 break-words"></p>
                 </div>
             </div>
         </section>
 
         <!-- General Shift Cipher Section -->
-        <section class="h-full flex flex-col items-center mb-5" id="shift">
-            <div class="w-[900px] bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-4">
-                <p class="text-white text-[18px] font-bold text-center mb-4">General Shift Cipher</p>
-                <div class="flex gap-4 items-center">
-                    <div class="flex-shrink-0">
-                        <img class="h-[300px] w-[200px] object-cover rounded-lg" src="./Img/cas.jpg" alt="Caesar Cipher">
+        <section class="flex flex-col items-center mb-8 scroll-mt-28" id="shift">
+            <div class="w-full max-w-4xl bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-4 sm:p-5">
+                <p class="text-white text-lg sm:text-xl font-bold text-center mb-4">General Shift Cipher</p>
+                <div class="flex flex-col md:flex-row gap-4 items-center">
+                    <div class="flex-shrink-0 mx-auto md:mx-0 w-40 md:w-auto">
+                        <img class="w-full h-auto max-h-[250px] md:max-h-[300px] object-cover rounded-lg" src="./Img/cas.jpg" alt="Caesar Cipher">
                     </div>
-                    <div class="text-white text-[18px] indent-8">
+                    <div class="text-white text-base sm:text-lg indent-4 sm:indent-8">
                         <p>
                             The General Shift Cipher extends the Caesar Cipher by allowing
                             flexibility in the shift value. Rather than always shifting
@@ -125,167 +143,154 @@
             </div>
             
             <!-- Shift Message Input -->
-            <div class="flex justify-center items-center">
-                <input type="text" id="shiftInput" class="w-[900px] h-[100px] bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg flex justify-start mt-5 p-3 text-white" placeholder="Enter your plain text...">
+            <div class="w-full max-w-4xl mt-5">
+                <input type="text" id="shiftInput" class="w-full min-h-[80px] sm:h-[100px] bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-4 text-white placeholder:text-gray-400" placeholder="Enter your plain text...">
             </div>
             
             <!-- Shift Key Input - UNLIMITED (any integer) -->
-            <div class="flex justify-center items-center">
-                <input type="number" id="shiftKey" class="w-[900px] h-[60px] bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg flex justify-start mt-5 p-3 text-white" placeholder="Enter your shift key (any integer, positive or negative)">
+            <div class="w-full max-w-4xl mt-4">
+                <input type="number" id="shiftKey" class="w-full h-14 sm:h-[60px] bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-4 text-white placeholder:text-gray-400" placeholder="Enter your shift key (any integer, positive or negative)">
             </div>
             
             <!-- Shift Buttons -->
-            <div class="flex justify-center items-center mt-2.5">
-                <button onclick="shiftEncrypt()" class="ml-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Encrypt</button>
-                <button onclick="shiftDecrypt()" class="ml-4 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">Decrypt</button>
+            <div class="flex flex-wrap justify-center items-center gap-3 mt-3">
+                <button onclick="shiftEncrypt()" class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2.5 rounded-lg transition">Encrypt</button>
+                <button onclick="shiftDecrypt()" class="bg-red-500 hover:bg-red-600 text-white px-5 py-2.5 rounded-lg transition">Decrypt</button>
             </div>
             
             <!-- Shift Result -->
-            <div id="shiftResult" class="mt-4 w-[900px] hidden flex flex-col items-center">
+            <div id="shiftResult" class="mt-4 w-full max-w-4xl hidden">
                 <div class="bg-slate-600 dark:bg-slate-700 p-4 rounded-lg">
                     <p class="font-semibold text-white">Result:</p>
-                    <p id="shiftOutput" class="text-[15px] text-green-400"></p>
-                    <p id="shiftKeyInfo" class="text-[15px] text-gray-300 mt-2"></p>
+                    <p id="shiftOutput" class="text-base sm:text-lg text-green-400 break-words"></p>
+                    <p id="shiftKeyInfo" class="text-sm text-gray-300 mt-2"></p>
                 </div>
             </div>
         </section>
-        <script src="./JS/shift.js"></script>
+        
+        <!-- RSA Cryptography Section - text ⇄ text encryption/decryption (exact original wording, responsive) -->
+        <section class="flex flex-col items-center p-2 sm:p-4 scroll-mt-28" id="rsa">
+            <!-- RSA Explanation (exact original text, no changes) -->
+            <div class="w-full max-w-4xl bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-4 sm:p-5">
+                <p class="text-white text-lg sm:text-xl font-bold text-center mb-4">
+                    RSA Cryptography
+                </p>
+                <div class="flex flex-col gap-4">
+                    <div class="text-white text-base sm:text-lg indent-4 sm:indent-8">
+                        <p>
+                            RSA is named after its inventors: Rivest, Shamir, and Adleman.It is an asymmetric (public-key) encryption algorithm.
+                            
+                        </p>
+                        <p>It uses two keys:</p>
 
-        <!-- RSA Cryptography Section -->
-        <section class="h-full flex flex-col items-center p-4" id="rsa">
-            <!-- RSA Explanation -->
-            <div class="w-[900px] bg-slate-700 dark:bg-slate-800
-                    rounded-2xl shadow-lg p-4">
-
-            <p class="text-white text-[20px] font-bold text-center mb-4">
-                RSA Cryptography
-            </p>
-            <div class="flex gap-4 items-center">
-                <div class="text-white text-[18px] indent-8">
-                    <p>
-                        RSA is named after its inventors: Rivest, Shamir, and Adleman.It is an asymmetric (public-key) encryption algorithm.
-                        
-                    </p>
-                    <p>It uses two keys:</p>
-
-                    <ul class="list-disc ml-20">
-                        <li>Public key is used for encryption</li>
-                        <li>Private key is used for decryption</li>
-                    </ul>
-                    <p class="mt-1.5 text-red-500">RSA Key Generation Steps</p>
-                    <ol class="list-decimal ml-20">
-                        <li>Choose two large prime numbers <strong>p</strong> and <strong>q</strong>.</li>
-                        <li>Compute <strong>n = p × q</strong>.</li>
-                        <li>Compute <strong>φ(n) = (p − 1)(q − 1)</strong>.</li>
-                        <li>
-                            Choose public exponent <strong>e</strong> such that 1 &lt; e &lt; φ(n) and 
-                            <strong>gcd(e, φ(n)) = 1</strong>.
-                        </li>
-                        <li>
-                            Compute private exponent <strong>d</strong> such that 
-                            <strong>d × e ≡ 1 (mod φ(n))</strong>.
-                        </li>
-                    </ol>
-                    <div class="ml-5">
-                        <p><strong>Public Key :</strong ><span class="text-red-500">(n, e)</span></p>
-                        <p><strong>Private Key:</strong><span class="text-red-500">(n, d)</span></p> 
-                    </div>
-         
-
-                    <p class="mt-1.5 text-red-500">RSA Encryption</p>
-
-                    <p class="ml-5">Message is converted to a number <strong>M</strong>.</p>
-
-                        <h2 class="ml-5">Encryption Formula</h2>
-                        <p class="ml-5">
+                        <ul class="list-disc ml-6 sm:ml-20">
+                            <li>Public key is used for encryption</li>
+                            <li>Private key is used for decryption</li>
+                        </ul>
+                        <p class="mt-1.5 text-red-500">RSA Key Generation Steps</p>
+                        <ol class="list-decimal ml-6 sm:ml-20">
+                            <li>Choose two large prime numbers <strong>p</strong> and <strong>q</strong>.</li>
+                            <li>Compute <strong>n = p × q</strong>.</li>
+                            <li>Compute <strong>φ(n) = (p − 1)(q − 1)</strong>.</li>
+                            <li>
+                                Choose public exponent <strong>e</strong> such that 1 &lt; e &lt; φ(n) and 
+                                <strong>gcd(e, φ(n)) = 1</strong>.
+                            </li>
+                            <li>
+                                Compute private exponent <strong>d</strong> such that 
+                                <strong>d × e ≡ 1 (mod φ(n))</strong>.
+                            </li>
+                        </ol>
+                        <div class="ml-4 sm:ml-5">
+                            <p><strong>Public Key :</strong ><span class="text-red-500">(n, e)</span></p>
+                            <p><strong>Private Key:</strong><span class="text-red-500">(n, d)</span></p> 
+                        </div>
+             
+                        <p class="mt-1.5 text-red-500">RSA Encryption</p>
+                        <p class="ml-4 sm:ml-5">Message is converted to a number <strong>M</strong>.</p>
+                        <h2 class="ml-4 sm:ml-5">Encryption Formula</h2>
+                        <p class="ml-4 sm:ml-5">
                             <strong>C = M<sup>e</sup> mod n</strong>
                         </p>
-
                         <h3>Where:</h3>
-                        <ul class="list-disc ml-20 ">
+                        <ul class="list-disc ml-6 sm:ml-20 ">
                             <li><strong>M</strong> = original message number</li>
                             <li><strong>e</strong> = public key exponent</li>
                             <li><strong>n</strong> = modulus (from the key generation step)</li>
                             <li><strong>C</strong> = the encrypted number</li>
                         </ul>
 
-                           <p class="mt-1.5 text-red-500">RSA Decryption</p>
-                           <div class="ml-5">
-                                <p>Ciphertext <strong>C</strong> is decrypted using the private key.</p>
-
+                        <p class="mt-1.5 text-red-500">RSA Decryption</p>
+                        <div class="ml-4 sm:ml-5">
+                            <p>Ciphertext <strong>C</strong> is decrypted using the private key.</p>
                             <h2>Decryption Formula</h2>
                             <p>
                                 <strong>M = C<sup>d</sup> mod n</strong>
                             </p>
-
                             <h3>Notes:</h3>
-                                <p>Only the private key holder can decrypt the message.</p>
-                           </div>
-                       
+                            <p>Only the private key holder can decrypt the message.</p>
+                        </div>
+                    
+                        <p  class="mt-1.5 text-red-500">RSA Example (Simplified)</p>
+                        <p class="underline mt-1.5 mb-1.5">Key Generation</p>
+                        <ul class="list-disc ml-6 sm:ml-20">
+                            <li>Choose <strong>p = 5</strong> and <strong>q = 11</strong></li>
+                            <li>Compute <strong>n = p × q = 5 × 11 = 55</strong></li>
+                            <li>Compute <strong>φ(n) = (p − 1)(q − 1) = (5-1)(11-1) = 40</strong></li>
+                            <li>
+                                Choose public exponent <strong>e = 3</strong> such that 1 &lt; e &lt; φ(n) and gcd(e, φ(n)) = 1
+                            </li>
+                            <li>
+                                Compute private exponent <strong>d = 27</strong> such that d × e ≡ 1 (mod φ(n))
+                            </li>
+                        </ul>
+                        <p  class="mt-1.5 text-red-500">Encryption</p>
+                        <p class="ml-4 sm:ml-5">
+                            Encrypt <strong>M = 7</strong> using public key (<strong>n = 55</strong>, <strong>e = 3</strong>):
+                        </p>
+                        <p class="ml-4 sm:ml-5">
+                            <strong>C = M<sup>e</sup> mod n = 7<sup>3</sup> mod 55 = 343 mod 55 = 13</strong>
+                        </p>
 
-                    <p  class="mt-1.5 text-red-500">RSA Example (Simplified)</p>
-                    <p class="underline mt-1.5 mb-1.5">Key Generation</p>
-                    <ul class="list-disc ml-20">
-                        <li>Choose <strong>p = 5</strong> and <strong>q = 11</strong></li>
-                        <li>Compute <strong>n = p × q = 5 × 11 = 55</strong></li>
-                        <li>Compute <strong>φ(n) = (p − 1)(q − 1) = (5-1)(11-1) = 40</strong></li>
-                        <li>
-                            Choose public exponent <strong>e = 3</strong> such that 1 &lt; e &lt; φ(n) and gcd(e, φ(n)) = 1
-                        </li>
-                        <li>
-                            Compute private exponent <strong>d = 27</strong> such that d × e ≡ 1 (mod φ(n))
-                        </li>
-                    </ul>
-                    <p  class="mt-1.5 text-red-500">Encryption</p>
-                    <p class="ml-5">
-                        Encrypt <strong>M = 7</strong> using public key (<strong>n = 55</strong>, <strong>e = 3</strong>):
-                    </p class="ml-5">
-                    <p class="ml-5">
-                        <strong>C = M<sup>e</sup> mod n = 7<sup>3</sup> mod 55 = 343 mod 55 = 13</strong>
-                    </p>
-
-                    <p  class="mt-1.5 text-red-500">Decryption</p>
-                    <div class="ml-5">
-                           <p>
-                        Decrypt <strong>C = 13</strong> using private key (<strong>n = 55</strong>, <strong>d = 27</strong>):
-                    </p>
-                    <p>
-                        <strong>M = C<sup>d</sup> mod n = 13<sup>27</sup> mod 55 = 7</strong>
-                    </p>
+                        <p  class="mt-1.5 text-red-500">Decryption</p>
+                        <div class="ml-4 sm:ml-5">
+                            <p>
+                                Decrypt <strong>C = 13</strong> using private key (<strong>n = 55</strong>, <strong>d = 27</strong>):
+                            </p>
+                            <p>
+                                <strong>M = C<sup>d</sup> mod n = 13<sup>27</sup> mod 55 = 7</strong>
+                            </p>
+                        </div>
                     </div>
-                 
                 </div>
-                 </div>
             </div>
 
             <!-- Prime P Input -->
-            <div class="flex justify-center items-center">
-                <input id="prime1" type="text" class="w-[900px] h-[100px] bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg flex justify-start mt-5 p-3 text-white" placeholder="Enter your prime P">
+            <div class="w-full max-w-4xl mt-5">
+                <input id="prime1" type="text" class="w-full min-h-[80px] sm:h-[100px] bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-4 text-white placeholder:text-gray-400" placeholder="Enter your prime P">
             </div>
-            <div class="flex justify-center items-center">
+            <div class="w-full max-w-4xl">
                 <p id="prime1Status" class="text-sm mt-1 text-gray-300">Enter a prime number</p>
             </div>
 
             <!-- Prime Q Input -->
-            <div class="flex justify-center items-center">
-                <input id="prime2" type="text" class="w-[900px] h-[100px] bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg flex justify-start mt-5 p-3 text-white" placeholder="Enter your prime Q">
+            <div class="w-full max-w-4xl mt-4">
+                <input id="prime2" type="text" class="w-full min-h-[80px] sm:h-[100px] bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-4 text-white placeholder:text-gray-400" placeholder="Enter your prime Q">
             </div>
-            <div class="flex justify-center items-center">
+            <div class="w-full max-w-4xl">
                 <p id="prime2Status" class="text-sm mt-1 text-gray-300">Enter a prime number</p>
             </div>
 
             <!-- Generate Button -->
-            <div class="flex justify-center items-center mt-2.5">
-                <button onclick="generateKeys()" class="ml-4 w-[100px] h-[50px] bg-blue-700 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Next</button>
+            <div class="flex justify-center items-center mt-3">
+                <button onclick="generateKeys()" class="w-28 sm:w-[100px] h-12 sm:h-[50px] bg-blue-700 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition">Next</button>
             </div>
 
-            
-
-            <!-- Encryption and Decryption Grid -->
-            <div class="w-[900px] mb-6 mt-6">
+            <!-- Encryption and Decryption Grid (text-to-text) -->
+            <div class="w-full max-w-4xl mb-6 mt-6 space-y-6">
                 <!-- Encryption Section -->
-                <div class="bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-6">
-                    <h2 class="text-[18px] font-semibold mb-4 text-blue-400">Encryption</h2>
+                <div class="bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-5">
+                    <h2 class="text-lg sm:text-xl font-semibold mb-4 text-blue-400">Encryption</h2>
                     
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-300 mb-2">Select Public Key (e):</label>
@@ -297,71 +302,68 @@
                     
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-300 mb-2">Message to Encrypt:</label>
-                        <input type="text" id="messageToEncrypt" class="w-full h-[60px] bg-slate-600 dark:bg-slate-700 rounded-lg shadow-lg p-3 text-white placeholder-gray-400" placeholder="Enter text (e.g., HELLO)">
+                        <input type="text" id="messageToEncrypt" class="w-full h-14 sm:h-[60px] bg-slate-600 dark:bg-slate-700 rounded-lg shadow-lg p-3 text-white placeholder-gray-400" placeholder="Enter text (e.g., HELLO)">
                         <p class="text-xs text-gray-400 mt-1">Simple: Only uppercase letters A-Z (no spaces)</p>
                     </div>
                     
                     <div class="flex justify-center items-center mt-2.5">
-                        <button onclick="encryptMessage()" class="w-[120px] h-[50px] bg-blue-700 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition">🔒 Encrypt</button>
+                        <button onclick="encryptMessage()" class="w-32 sm:w-[120px] h-12 sm:h-[50px] bg-blue-700 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition">🔒 Encrypt</button>
                     </div>
                     
                     <div id="encryptionResult" class="mt-4 hidden">
                         <div class="bg-slate-600 dark:bg-slate-900 p-4 rounded-lg">
-                            <p class="font-semibold text-white">Encrypted Result:</p>
-                            <p id="ciphertext" class="font-mono text-lg break-all text-green-400"></p>
-                            <p class="text-xs text-gray-300 mt-2">c = m^e mod n</p>
+                            <p class="font-semibold text-white">Encrypted Result (text):</p>
+                            <!-- encrypted text (string of letters) appears here -->
+                            <p id="ciphertext" class="font-mono text-base sm:text-lg break-all text-green-400"></p>
+                            <p class="text-xs text-gray-300 mt-2">c = m^e mod n → mapped to letter</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Key Output -->
-                <div id="keyOutput" class="mt-4 hidden w-[900px]">
+                <div id="keyOutput" class="hidden w-full">
                     <div class="bg-slate-700 dark:bg-slate-800 p-4 rounded-2xl shadow-lg">
-                        <p class=" text-[15px] text-white">🔑 Public Key (n, e): <span id="publicKey" class="font-bold text-green-400"></span></p>
-                        <p class="text-[15px] text-white">🔐 Private Key (n, d): <span id="privateKey" class="font-bold text-red-400"></span></p>
+                        <p class="text-sm sm:text-base text-white">🔑 Public Key (n, e): <span id="publicKey" class="font-bold text-green-400"></span></p>
+                        <p class="text-sm sm:text-base text-white">🔐 Private Key (n, d): <span id="privateKey" class="font-bold text-red-400"></span></p>
                         <p class="text-xs text-gray-300 mt-2">n = p × q | φ(n) = (p-1)(q-1) | e × d ≡ 1 mod φ(n)</p>
                     </div>
                 </div>
                 
                 <!-- Decryption Section -->
-                <div class="bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-6 mt-6">
-                    <h2 class="text-[15px] mb-4 text-green-400">🔓 Decryption</h2>
+                <div class="bg-slate-700 dark:bg-slate-800 rounded-2xl shadow-lg p-5">
+                    <h2 class="text-lg sm:text-xl mb-4 text-green-400">🔓 Decryption</h2>
                     
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-300 mb-2">Private Key (d):</label>
-                        <input type="text" id="privateKeyInput" class="w-full h-[60px] bg-slate-600 dark:bg-slate-700 rounded-lg shadow-lg p-3 text-white placeholder-gray-400" placeholder="Enter private key d">
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-300 mb-2">Ciphertext (numbers separated by commas):</label>
-                        <input type="text" id="ciphertextToDecrypt" class="w-full h-[60px] bg-slate-600 dark:bg-slate-700 rounded-lg shadow-lg p-3 text-white placeholder-gray-400" placeholder="e.g., 79, 82, 1515">
+                        <input type="text" id="privateKeyInput" class="w-full h-14 sm:h-[60px] bg-slate-600 dark:bg-slate-700 rounded-lg shadow-lg p-3 text-white placeholder-gray-400" placeholder="Enter private key d">
                     </div>
                     
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-300 mb-2">Modulus (n):</label>
-                        <input type="text" id="modulusForDecrypt" class="w-full h-[60px] bg-slate-600 dark:bg-slate-700 rounded-lg shadow-lg p-3 text-white placeholder-gray-400" placeholder="Enter n">
+                        <input type="text" id="modulusForDecrypt" class="w-full h-14 sm:h-[60px] bg-slate-600 dark:bg-slate-700 rounded-lg shadow-lg p-3 text-white placeholder-gray-400" placeholder="Enter n">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Ciphertext (encrypted text):</label>
+                        <input type="text" id="ciphertextToDecrypt" class="w-full h-14 sm:h-[60px] bg-slate-600 dark:bg-slate-700 rounded-lg shadow-lg p-3 text-white placeholder-gray-400" placeholder="Paste encrypted text (e.g., KHOOR)">
                     </div>
                     
                     <div class="flex justify-center items-center mt-2.5">
-                        <button onclick="decryptMessage()" class="w-[125px] h-[50px] bg-green-700 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition">🔓 Decrypt</button>
+                        <button onclick="decryptMessage()" class="w-32 sm:w-[125px] h-12 sm:h-[50px] bg-green-700 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition">🔓 Decrypt</button>
                     </div>
                     
                     <div id="decryptionResult" class="mt-4 hidden">
                         <div class="bg-slate-600 dark:bg-slate-900 p-4 rounded-lg">
                             <p class="font-semibold text-white">Decrypted Message:</p>
-                            <p id="plaintext" class="font-mono text-lg text-green-400"></p>
-                            <p class="text-xs text-gray-300 mt-2">m = c^d mod n</p>
+                            <p id="plaintext" class="font-mono text-base sm:text-lg text-green-400"></p>
+                            <p class="text-xs text-gray-300 mt-2">m = c^d mod n → original text</p>
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
     </main>
 
-    <!-- RSA JavaScript -->
     <script src="JS/Rsa.js"></script>
-    
-    
 </body>
 </html>

@@ -1,3 +1,34 @@
+// Theme toggle functionality
+const themeToggle = document.getElementById('themeToggle');
+const html = document.documentElement;
+const moonIcon = document.getElementById('moonIcon');
+const sunIcon = document.getElementById('sunIcon');
+
+themeToggle.addEventListener('click', () => {
+    if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        moonIcon.classList.add('hidden');
+        sunIcon.classList.remove('hidden');
+    } else {
+        html.classList.add('dark');
+        moonIcon.classList.remove('hidden');
+        sunIcon.classList.add('hidden');
+    }
+});
+
+// Dropdown functionality
+const dropdownBtn = document.getElementById('dropdownBtn');
+const dropdownMenu = document.getElementById('dropdownMenu');
+
+dropdownBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdownMenu.classList.toggle('hidden');
+});
+
+document.addEventListener('click', () => {
+    dropdownMenu.classList.add('hidden');
+});
+
 // Simple helper functions - easy to understand
 
 // Check if a number is prime
@@ -97,7 +128,7 @@ function generateKeys() {
         document.getElementById('keyOutput').style.display = 'block';
         
         // Common e values to try
-        let possibleE = [3, 5, 17, 257, 65537];
+        let possibleE = [3, 5,17, 257, 65537];
         let validE = [];
         
         // Find valid e values (must be coprime with phi)
